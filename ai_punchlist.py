@@ -839,6 +839,15 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
+# ── UI Helpers ───────────────────────────────────────────────────────────────
+def _sec(label):
+    st.markdown(f'<div class="slabel">{label}</div>', unsafe_allow_html=True)
+
+def _pill(p):
+    cls = {"High":"badge-high","Medium":"badge-medium","Low":"badge-low"}.get(p,"badge-medium")
+    dot = {"High":"#ff6b6b","Medium":"#ffb347","Low":"#34d399"}.get(p,"#ffb347")
+    return f'<span class="badge {cls}"><span class="badge-dot" style="background:{dot}"></span>{p}</span>'
+
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4 = st.tabs([
     "📸  Field Capture",
