@@ -63,141 +63,103 @@ st.set_page_config(
 # ═════════════════════════════════════════════════════════════════════════════
 st.markdown("""
 <style>
-/* ── Fonts: Plus Jakarta Sans (display) + DM Sans (body) ── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
 
-/* ── Design Tokens ── */
 :root {
-    /* Backgrounds */
-    --bg-page:      #F2F2F7;
-    --bg-card:      #FFFFFF;
-    --bg-input:     #F5F5F7;
-
-    /* Text hierarchy */
-    --text-primary:   #1D1D1F;
-    --text-secondary: #6E6E73;
-    --text-tertiary:  #AEAEB2;
-
-    /* Accent — Leighton Orange, used surgically */
-    --orange:        #FF6600;
-    --orange-soft:   rgba(255,102,0,0.08);
-
-    /* Semantic colors — muted, professional */
-    --red:           #FF3B30;
-    --red-soft:      rgba(255,59,48,0.08);
-    --amber:         #FF9500;
-    --amber-soft:    rgba(255,149,0,0.08);
-    --green:         #34C759;
-    --green-soft:    rgba(52,199,89,0.08);
-    --blue:          #007AFF;
-    --blue-soft:     rgba(0,122,255,0.08);
-
-    /* Shadows */
-    --shadow-xs: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
-    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
-    --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
-
-    /* Borders */
-    --border:    rgba(0,0,0,0.06);
-    --border-md: rgba(0,0,0,0.10);
-
-    /* Radius */
-    --r-sm:  8px;
-    --r-md:  12px;
-    --r-lg:  16px;
-
-    /* Type */
-    --font-display: 'Plus Jakarta Sans', sans-serif;
-    --font-body:    'DM Sans', sans-serif;
+    --bg:        #09090b;
+    --surface:   #111113;
+    --surface2:  #18181b;
+    --surface3:  #1f1f23;
+    --border:    rgba(255,255,255,0.06);
+    --border2:   rgba(255,255,255,0.10);
+    --text:      #fafafa;
+    --text2:     #a1a1aa;
+    --text3:     #52525b;
+    --accent:    #ff6600;
+    --accent-bg: rgba(255,102,0,0.10);
+    --red:       #ef4444;
+    --red-bg:    rgba(239,68,68,0.10);
+    --amber:     #f59e0b;
+    --amber-bg:  rgba(245,158,11,0.10);
+    --green:     #22c55e;
+    --green-bg:  rgba(34,197,94,0.10);
 }
 
-/* ── Global Reset ── */
 html, body, [class*="css"] {
-    font-family: var(--font-body) !important;
-    background-color: var(--bg-page) !important;
-    color: var(--text-primary) !important;
+    font-family: 'Geist', sans-serif !important;
+    background: var(--bg) !important;
+    color: var(--text) !important;
     -webkit-font-smoothing: antialiased !important;
 }
 .block-container {
-    padding: 0 2.5rem 6rem !important;
-    max-width: 1320px !important;
+    padding: 0 2rem 6rem !important;
+    max-width: 1280px !important;
 }
-#MainMenu, header, footer { visibility: hidden !important; display: none !important; }
+#MainMenu, header, footer,
 div[data-testid="stDecoration"] { display: none !important; }
-
-/* Page entrance */
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-.block-container { animation: fadeUp 0.45s cubic-bezier(0.16,1,0.3,1) both; }
 
 /* ── Tabs ── */
 div[data-testid="stTabs"] [data-baseweb="tab-list"] {
     background: transparent !important;
-    border-radius: 0 !important;
+    border-bottom: 1px solid var(--border) !important;
     padding: 0 !important;
     gap: 0 !important;
-    border-bottom: 1px solid var(--border) !important;
 }
 div[data-testid="stTabs"] [data-baseweb="tab"] {
     background: transparent !important;
-    border-radius: 0 !important;
-    color: var(--text-secondary) !important;
-    font-family: var(--font-display) !important;
-    font-size: 0.82rem !important;
+    color: var(--text3) !important;
+    font-family: 'Geist', sans-serif !important;
+    font-size: 0.8rem !important;
     font-weight: 500 !important;
     letter-spacing: 0.01em !important;
-    text-transform: none !important;
-    padding: 0.75rem 1.25rem !important;
+    padding: 0.7rem 1rem !important;
     border: none !important;
-    border-bottom: 2px solid transparent !important;
-    transition: color 0.2s ease, border-color 0.2s ease !important;
+    border-bottom: 1.5px solid transparent !important;
     margin-bottom: -1px !important;
+    transition: color 0.15s !important;
+    text-transform: none !important;
+    border-radius: 0 !important;
 }
 div[data-testid="stTabs"] [data-baseweb="tab"]:hover:not([aria-selected="true"]) {
-    color: var(--text-primary) !important;
+    color: var(--text2) !important;
     background: transparent !important;
 }
 div[data-testid="stTabs"] [aria-selected="true"] {
-    color: var(--orange) !important;
-    border-bottom: 2px solid var(--orange) !important;
-    background: transparent !important;
+    color: var(--text) !important;
+    border-bottom-color: var(--text) !important;
     font-weight: 600 !important;
+    background: transparent !important;
 }
 div[data-testid="stTabs"] [data-baseweb="tab-panel"] {
     background: transparent !important;
     border: none !important;
-    padding: 2rem 0 0 !important;
+    padding: 1.75rem 0 0 !important;
 }
 
 /* ── Inputs ── */
 div[data-testid="stTextInput"] input,
 div[data-testid="stTextArea"] textarea {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-md) !important;
-    border-radius: var(--r-sm) !important;
-    color: var(--text-primary) !important;
-    font-family: var(--font-body) !important;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: 6px !important;
+    color: var(--text) !important;
+    font-family: 'Geist', sans-serif !important;
     font-size: 0.875rem !important;
-    padding: 0.6rem 0.85rem !important;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-    box-shadow: var(--shadow-xs) !important;
+    transition: border-color 0.15s !important;
 }
 div[data-testid="stTextInput"] input:focus,
 div[data-testid="stTextArea"] textarea:focus {
-    border-color: var(--orange) !important;
-    box-shadow: 0 0 0 3px rgba(255,102,0,0.12), var(--shadow-xs) !important;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 0 2px var(--accent-bg) !important;
 }
 div[data-testid="stSelectbox"] > div > div,
 div[data-baseweb="select"] div {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-md) !important;
-    border-radius: var(--r-sm) !important;
-    color: var(--text-primary) !important;
-    font-family: var(--font-body) !important;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: 6px !important;
+    color: var(--text) !important;
+    font-family: 'Geist', sans-serif !important;
     font-size: 0.875rem !important;
-    box-shadow: var(--shadow-xs) !important;
 }
 div[data-testid="stTextInput"] label,
 div[data-testid="stTextArea"] label,
@@ -205,406 +167,343 @@ div[data-testid="stSelectbox"] label,
 div[data-testid="stRadio"] > label,
 div[data-testid="stCheckbox"] label,
 div[data-testid="stMultiSelect"] label {
-    color: var(--text-secondary) !important;
-    font-family: var(--font-display) !important;
-    font-size: 0.7rem !important;
-    font-weight: 600 !important;
+    color: var(--text3) !important;
+    font-family: 'Geist', sans-serif !important;
+    font-size: 0.72rem !important;
+    font-weight: 500 !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.07em !important;
 }
 div[data-testid="stRadio"] label span {
     font-size: 0.875rem !important;
-    color: var(--text-primary) !important;
-    font-family: var(--font-body) !important;
+    color: var(--text2) !important;
+    font-family: 'Geist', sans-serif !important;
 }
 
 /* ── Buttons ── */
 div[data-testid="stButton"] button[kind="primary"] {
-    background: var(--orange) !important;
+    background: var(--accent) !important;
     border: none !important;
-    border-radius: var(--r-sm) !important;
-    color: #FFFFFF !important;
-    font-family: var(--font-display) !important;
-    font-weight: 600 !important;
+    border-radius: 6px !important;
+    color: #fff !important;
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 500 !important;
     font-size: 0.82rem !important;
-    letter-spacing: 0.01em !important;
-    padding: 0.6rem 1.2rem !important;
-    box-shadow: 0 1px 3px rgba(255,102,0,0.3) !important;
-    transition: all 0.2s ease !important;
+    padding: 0.55rem 1.1rem !important;
+    transition: opacity 0.15s !important;
 }
-div[data-testid="stButton"] button[kind="primary"]:hover {
-    background: #E55A00 !important;
-    box-shadow: 0 4px 12px rgba(255,102,0,0.35) !important;
-    transform: translateY(-1px) !important;
-}
+div[data-testid="stButton"] button[kind="primary"]:hover { opacity: 0.88 !important; }
+
 div[data-testid="stButton"] button[kind="secondary"] {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-md) !important;
-    border-radius: var(--r-sm) !important;
-    color: var(--text-secondary) !important;
-    font-family: var(--font-body) !important;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: 6px !important;
+    color: var(--text2) !important;
+    font-family: 'Geist', sans-serif !important;
     font-size: 0.82rem !important;
-    box-shadow: var(--shadow-xs) !important;
-    transition: all 0.2s ease !important;
+    transition: border-color 0.15s, color 0.15s !important;
 }
 div[data-testid="stButton"] button[kind="secondary"]:hover {
-    color: var(--text-primary) !important;
-    box-shadow: var(--shadow-sm) !important;
-    transform: translateY(-1px) !important;
+    border-color: var(--border2) !important;
+    color: var(--text) !important;
 }
+
 div[data-testid="stForm"] button[kind="primaryFormSubmit"],
 div[data-testid="stForm"] button[type="submit"] {
-    background: var(--orange) !important;
+    background: var(--accent) !important;
     border: none !important;
-    border-radius: var(--r-sm) !important;
-    color: #FFFFFF !important;
-    font-family: var(--font-display) !important;
-    font-weight: 600 !important;
+    border-radius: 6px !important;
+    color: #fff !important;
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 500 !important;
     font-size: 0.875rem !important;
-    padding: 0.7rem 1.5rem !important;
-    box-shadow: 0 1px 3px rgba(255,102,0,0.3) !important;
-    transition: all 0.2s ease !important;
+    transition: opacity 0.15s !important;
 }
 div[data-testid="stForm"] button[kind="primaryFormSubmit"]:hover,
-div[data-testid="stForm"] button[type="submit"]:hover {
-    background: #E55A00 !important;
-    box-shadow: 0 4px 12px rgba(255,102,0,0.35) !important;
-    transform: translateY(-1px) !important;
-}
+div[data-testid="stForm"] button[type="submit"]:hover { opacity: 0.88 !important; }
+
 div[data-testid="stDownloadButton"] button {
-    background: var(--bg-card) !important;
-    border: 1px solid var(--border-md) !important;
-    border-radius: var(--r-sm) !important;
-    color: var(--orange) !important;
-    font-family: var(--font-display) !important;
-    font-weight: 600 !important;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: 6px !important;
+    color: var(--text2) !important;
+    font-family: 'Geist', sans-serif !important;
+    font-weight: 500 !important;
     font-size: 0.82rem !important;
-    box-shadow: var(--shadow-xs) !important;
-    transition: all 0.2s ease !important;
+    transition: color 0.15s, border-color 0.15s !important;
 }
 div[data-testid="stDownloadButton"] button:hover {
-    background: var(--orange-soft) !important;
-    box-shadow: var(--shadow-sm) !important;
-    transform: translateY(-1px) !important;
+    color: var(--text) !important;
+    border-color: var(--border2) !important;
 }
 
 /* ── Form container ── */
 div[data-testid="stForm"] {
-    background: var(--bg-card) !important;
+    background: var(--surface) !important;
     border: 1px solid var(--border) !important;
-    border-radius: var(--r-lg) !important;
-    padding: 1.5rem !important;
-    box-shadow: var(--shadow-sm) !important;
+    border-radius: 10px !important;
+    padding: 1.25rem !important;
 }
 
 /* ── Alerts ── */
 div[data-testid="stAlert"] {
-    background: var(--bg-input) !important;
+    background: var(--surface2) !important;
     border: 1px solid var(--border) !important;
-    border-radius: var(--r-md) !important;
-    font-family: var(--font-body) !important;
+    border-radius: 8px !important;
+    font-family: 'Geist', sans-serif !important;
     font-size: 0.875rem !important;
+    color: var(--text2) !important;
 }
 
 /* ── Dataframe ── */
 div[data-testid="stDataFrame"] {
     border: 1px solid var(--border) !important;
-    border-radius: var(--r-md) !important;
+    border-radius: 8px !important;
     overflow: hidden !important;
-    box-shadow: var(--shadow-xs) !important;
 }
 
-/* ── File uploader / Camera / Audio ── */
+/* ── File / Camera / Audio ── */
 div[data-testid="stFileUploader"] section {
-    background: var(--bg-input) !important;
-    border: 1.5px dashed var(--border-md) !important;
-    border-radius: var(--r-md) !important;
-    transition: border-color 0.2s ease !important;
+    background: var(--surface2) !important;
+    border: 1px dashed var(--border2) !important;
+    border-radius: 8px !important;
+    transition: border-color 0.15s !important;
 }
-div[data-testid="stFileUploader"] section:hover { border-color: var(--orange) !important; }
+div[data-testid="stFileUploader"] section:hover { border-color: var(--accent) !important; }
 div[data-testid="stFileUploader"] label,
 div[data-testid="stCameraInput"] label,
-div[data-testid="stAudioInput"] label { color: var(--text-secondary) !important; }
+div[data-testid="stAudioInput"] label { color: var(--text3) !important; }
 div[data-testid="stCameraInput"] button {
-    background: var(--bg-input) !important;
-    border: 1px solid var(--border-md) !important;
-    border-radius: var(--r-sm) !important;
-    color: var(--text-primary) !important;
-    transition: all 0.2s ease !important;
+    background: var(--surface2) !important;
+    border: 1px solid var(--border2) !important;
+    border-radius: 6px !important;
+    color: var(--text2) !important;
 }
 
-/* ── Spinner ── */
+/* ── Spinner / caption ── */
 div[data-testid="stSpinner"] p {
-    font-family: var(--font-body) !important;
-    font-size: 0.875rem !important;
-    color: var(--text-secondary) !important;
+    font-family: 'Geist', sans-serif !important;
+    font-size: 0.82rem !important;
+    color: var(--text3) !important;
 }
-
-/* ── Caption ── */
 div[data-testid="stCaptionContainer"] p {
-    font-family: var(--font-body) !important;
-    font-size: 0.75rem !important;
-    color: var(--text-tertiary) !important;
+    font-family: 'Geist Mono', monospace !important;
+    font-size: 0.7rem !important;
+    color: var(--text3) !important;
 }
 
-/* ═══════════════════════════════
-   CUSTOM HTML COMPONENTS
-   ═══════════════════════════════ */
+/* ── Custom components ── */
 
-/* Section label */
-.sec-lbl {
-    font-family: var(--font-display);
+.section-label {
+    font-family: 'Geist', sans-serif;
     font-size: 0.68rem;
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-tertiary);
-    margin-bottom: 0.75rem;
-    margin-top: 1.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin: 1.5rem 0 0.65rem;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
 }
-.sec-lbl::after {
+.section-label::after {
     content: '';
     flex: 1;
     height: 1px;
     background: var(--border);
 }
 
-/* KPI grid */
-.kpi-grid {
+.kpi-row {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 12px;
-    margin-bottom: 2rem;
+    gap: 8px;
+    margin-bottom: 1.75rem;
 }
-.kpi-card {
-    background: var(--bg-card);
+.kpi {
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 1.25rem 1.4rem;
-    box-shadow: var(--shadow-xs);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
 }
-.kpi-card:hover {
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-}
-.kpi-accent {
-    width: 24px;
-    height: 3px;
-    border-radius: 2px;
-    margin-bottom: 0.85rem;
-}
-.kpi-val {
-    font-family: var(--font-display);
-    font-size: 1.9rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
+.kpi-num {
+    font-family: 'Geist', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
     line-height: 1;
-    color: var(--text-primary);
     margin-bottom: 0.3rem;
 }
-.kpi-lbl {
-    font-family: var(--font-body);
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-}
-.kpi-sub {
-    font-family: var(--font-body);
-    font-size: 0.7rem;
-    color: var(--text-tertiary);
-    margin-top: 0.15rem;
+.kpi-label {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text3);
+    letter-spacing: 0.01em;
 }
 
-/* AI output card */
-.ai-card {
-    background: var(--bg-card);
+.card {
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 1.25rem 1.4rem;
-    margin-top: 0.75rem;
-    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+    padding: 1.1rem 1.2rem;
+    margin-top: 0.6rem;
 }
-.ai-card-header {
+.card-label {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 0.85rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid var(--border);
 }
-.ai-card-title {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    font-weight: 700;
+.card-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.field {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
+}
+.field-label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--text-secondary);
+    color: var(--text3);
+    margin-bottom: 0.2rem;
 }
-.ai-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-.ai-field {
-    background: var(--bg-input);
-    border-radius: var(--r-sm);
-    padding: 0.65rem 0.85rem;
-}
-.ai-lbl {
-    font-family: var(--font-display);
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-tertiary);
-    margin-bottom: 0.25rem;
-}
-.ai-val {
-    font-family: var(--font-body);
+.field-value {
+    font-family: 'Geist', sans-serif;
     font-size: 0.875rem;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--text);
     line-height: 1.4;
 }
-.ai-full {
-    background: var(--bg-input);
-    border-radius: var(--r-sm);
-    padding: 0.65rem 0.85rem;
+.field-full {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 0.6rem 0.8rem;
     margin-top: 8px;
 }
 
-/* Priority pills */
 .pill {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    padding: 0.2rem 0.65rem;
-    border-radius: 100px;
-    font-family: var(--font-display);
+    gap: 5px;
+    padding: 0.18rem 0.55rem;
+    border-radius: 4px;
+    font-family: 'Geist', sans-serif;
     font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-weight: 500;
 }
-.pill::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-}
-.pill-high   { background: var(--red-soft);   color: var(--red);   }
-.pill-high::before   { background: var(--red);   }
-.pill-medium { background: var(--amber-soft); color: var(--amber); }
-.pill-medium::before { background: var(--amber); }
-.pill-low    { background: var(--green-soft); color: var(--green); }
-.pill-low::before    { background: var(--green); }
+.pill-dot { width: 5px; height: 5px; border-radius: 50%; }
+.pill-high   { background: var(--red-bg);   color: var(--red);   }
+.pill-medium { background: var(--amber-bg); color: var(--amber); }
+.pill-low    { background: var(--green-bg); color: var(--green); }
 
-/* Offline queue badge */
-.queue-badge {
-    background: var(--amber-soft);
-    border: 1px solid rgba(255,149,0,0.2);
-    border-radius: var(--r-md);
-    padding: 1rem 1.2rem;
-    color: #9A5200;
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-/* Info card */
-.info-card {
-    background: var(--bg-card);
+.transcript {
+    background: var(--surface2);
     border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 1.25rem 1.4rem;
-    box-shadow: var(--shadow-xs);
-    font-family: var(--font-body);
+    border-radius: 6px;
+    padding: 0.75rem 0.9rem;
+    margin-top: 0.5rem;
+    font-family: 'Geist', sans-serif;
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--text2);
+    line-height: 1.6;
+}
+
+.offline-note {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    padding: 0.9rem 1rem;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text2);
     line-height: 1.65;
 }
-.info-card strong { color: var(--text-primary); font-weight: 600; }
 
-/* Transcript box */
-.transcript-box {
-    background: var(--bg-input);
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    padding: 0.85rem 1rem;
-    margin-top: 0.5rem;
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-.transcript-label {
-    font-family: var(--font-display);
-    font-size: 0.62rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-tertiary);
-    margin-bottom: 0.4rem;
-}
-
-/* Record count */
-.record-count {
-    display: inline-block;
-    background: var(--bg-input);
-    border-radius: 100px;
-    padding: 0.2rem 0.7rem;
-    font-family: var(--font-body);
-    font-size: 0.75rem;
-    color: var(--text-tertiary);
-    margin: 0.3rem 0 0.75rem;
-}
-
-/* Session info */
-.session-info {
-    background: var(--bg-input);
-    border-radius: var(--r-md);
-    padding: 1rem 1.2rem;
-    font-family: var(--font-body);
+.queue-notice {
+    background: var(--amber-bg);
+    border: 1px solid rgba(245,158,11,0.2);
+    border-radius: 6px;
+    padding: 0.75rem 0.9rem;
+    font-family: 'Geist', sans-serif;
     font-size: 0.82rem;
-    color: var(--text-secondary);
+    color: var(--amber);
+    margin-bottom: 0.75rem;
 }
-.session-key {
-    font-family: var(--font-display);
-    font-size: 0.72rem;
-    font-weight: 700;
+
+.empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: var(--text3);
+    font-family: 'Geist', sans-serif;
+    font-size: 0.82rem;
+    gap: 0.5rem;
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.35rem 1.5rem;
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+}
+.meta-key {
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--text-tertiary);
+    color: var(--text3);
 }
-.session-val { color: var(--text-primary); font-weight: 500; }
-
-/* Empty state */
-.empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: var(--text-tertiary);
-}
-.empty-state-icon { font-size: 2.5rem; margin-bottom: 0.75rem; opacity: 0.4; }
-.empty-state-text {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    line-height: 1.6;
-    color: var(--text-tertiary);
+.meta-val {
+    font-family: 'Geist', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text2);
+    font-weight: 500;
 }
 
-/* Misc */
-hr { border-color: var(--border) !important; margin: 0.25rem 0 !important; }
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.2); }
+.desc-card {
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 0.9rem 1rem;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text2);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+}
+.danger-notice {
+    background: var(--red-bg);
+    border: 1px solid rgba(239,68,68,0.15);
+    border-radius: 6px;
+    padding: 0.7rem 0.9rem;
+    font-family: 'Geist', sans-serif;
+    font-size: 0.78rem;
+    color: #fca5a5;
+    margin-bottom: 0.6rem;
+}
+
+hr { border-color: var(--border) !important; }
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 2px; }
 </style>
 """, unsafe_allow_html=True)
+
 
 # ═════════════════════════════════════════════════════════════════════════════
 # SESSION STATE  — unchanged from original
@@ -741,381 +640,305 @@ def load_demo_data():
     st.session_state.defects        = pd.DataFrame(rows, columns=DEFECT_COLS)
     st.session_state.defect_counter = 62
 
-def _sec(label: str) -> None:
-    st.markdown(f'<div class="sec-lbl">{label}</div>', unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# HEADER — Apple style: white bar, minimal, title left, status right
-# ═════════════════════════════════════════════════════════════════════════════
+
+# ── Header ────────────────────────────────────────────────────────────────────
 st.markdown(f"""
 <div style="
-    background:var(--bg-card);
     border-bottom:1px solid var(--border);
-    padding:1.5rem 2.5rem 1.25rem;
-    margin:0 -2.5rem 2rem -2.5rem;
+    padding:1.25rem 2rem;
+    margin:0 -2rem 1.75rem;
     display:flex;align-items:center;justify-content:space-between;
-    box-shadow:0 1px 0 rgba(0,0,0,0.04);
 ">
-  <div style="display:flex;align-items:center;gap:1rem">
-    <div style="width:40px;height:40px;background:var(--orange);border-radius:10px;
-                display:flex;align-items:center;justify-content:center;font-size:1.2rem;
-                box-shadow:0 2px 8px rgba(255,102,0,0.3)">🏗️</div>
+  <div style="display:flex;align-items:center;gap:0.75rem">
+    <div style="
+        width:32px;height:32px;background:var(--accent);
+        border-radius:7px;display:flex;align-items:center;
+        justify-content:center;font-size:1rem;flex-shrink:0
+    ">🏗️</div>
     <div>
-      <div style="font-family:var(--font-display);font-size:1.15rem;font-weight:700;
-                  color:var(--text-primary);letter-spacing:-0.01em;line-height:1.2">
+      <div style="font-family:'Geist',sans-serif;font-size:0.95rem;
+                  font-weight:600;color:var(--text);letter-spacing:-0.01em">
         AI Punchlist
       </div>
-      <div style="font-family:var(--font-body);font-size:0.78rem;color:var(--text-tertiary);
-                  letter-spacing:0.01em;margin-top:1px">
-        Leighton Asia &nbsp;&middot;&nbsp; Smart Inspection Hub
+      <div style="font-family:'Geist',sans-serif;font-size:0.72rem;
+                  color:var(--text3);margin-top:1px">
+        Leighton Asia · Smart Inspection Hub
       </div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:1rem">
-    <div style="text-align:right">
-      <div style="font-family:var(--font-display);font-size:0.68rem;font-weight:700;
-                  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-tertiary)">
-        Powered by
-      </div>
-      <div style="font-family:var(--font-display);font-size:0.82rem;font-weight:600;
-                  color:var(--text-secondary)">Gemini 2.0 Flash</div>
-    </div>
+  <div style="display:flex;align-items:center;gap:0.65rem">
     <div style="
-        background:{'rgba(52,199,89,0.1)' if _GEMINI_OK else 'rgba(0,0,0,0.04)'};
-        border:1px solid {'rgba(52,199,89,0.25)' if _GEMINI_OK else 'var(--border)'};
-        border-radius:100px;padding:0.3rem 0.75rem;
-        font-family:var(--font-display);font-size:0.68rem;font-weight:700;
-        text-transform:uppercase;letter-spacing:0.08em;
-        color:{'var(--green)' if _GEMINI_OK else 'var(--text-tertiary)'};
-        display:flex;align-items:center;gap:0.4rem;
+        width:6px;height:6px;border-radius:50%;
+        background:{'var(--green)' if _GEMINI_OK else 'var(--text3)'};
+        flex-shrink:0
+    "></div>
+    <span style="
+        font-family:'Geist',sans-serif;font-size:0.75rem;
+        color:var(--text3);letter-spacing:0.01em
     ">
-      <span style="width:6px;height:6px;border-radius:50%;
-                   background:{'var(--green)' if _GEMINI_OK else 'var(--text-tertiary)'}"></span>
-      {'API Connected' if _GEMINI_OK else 'No API Key'}
-    </div>
+        {'Gemini Connected' if _GEMINI_OK else 'No API Key'}
+    </span>
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# GLOBAL KPI STRIP — white cards with colour accent bars + hover elevation
-# ═════════════════════════════════════════════════════════════════════════════
+# ── KPI strip ─────────────────────────────────────────────────────────────────
 df_all  = st.session_state.defects
 total   = len(df_all)
 high_c  = int((df_all["Priority"] == "High").sum())   if total else 0
 med_c   = int((df_all["Priority"] == "Medium").sum()) if total else 0
 low_c   = int((df_all["Priority"] == "Low").sum())    if total else 0
-open_c  = int((df_all["Status"]   == "Open").sum())   if total else 0
 q_count = len(st.session_state.offline_queue)
 
 st.markdown(f"""
-<div class="kpi-grid">
-  <div class="kpi-card">
-    <div class="kpi-accent" style="background:var(--orange)"></div>
-    <div class="kpi-val">{total}</div>
-    <div class="kpi-lbl">Total Defects</div>
-    <div class="kpi-sub">all time</div>
+<div class="kpi-row">
+  <div class="kpi">
+    <div class="kpi-num">{total}</div>
+    <div class="kpi-label">Total Defects</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-accent" style="background:var(--red)"></div>
-    <div class="kpi-val" style="color:var(--red)">{high_c}</div>
-    <div class="kpi-lbl">High Priority</div>
-    <div class="kpi-sub">require urgent action</div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:var(--red)">{high_c}</div>
+    <div class="kpi-label">High Priority</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-accent" style="background:var(--amber)"></div>
-    <div class="kpi-val" style="color:var(--amber)">{med_c}</div>
-    <div class="kpi-lbl">Medium Priority</div>
-    <div class="kpi-sub">within 7 days</div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:var(--amber)">{med_c}</div>
+    <div class="kpi-label">Medium</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-accent" style="background:var(--green)"></div>
-    <div class="kpi-val" style="color:var(--green)">{low_c}</div>
-    <div class="kpi-lbl">Low Priority</div>
-    <div class="kpi-sub">within 14 days</div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:var(--green)">{low_c}</div>
+    <div class="kpi-label">Low Priority</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-accent" style="background:{'var(--amber)' if q_count>0 else 'var(--blue)'}"></div>
-    <div class="kpi-val" style="color:{'var(--amber)' if q_count>0 else 'var(--text-primary)'}">
-      {q_count}
-    </div>
-    <div class="kpi-lbl">Offline Queue</div>
-    <div class="kpi-sub">{'pending sync' if q_count>0 else 'all synced'}</div>
+  <div class="kpi">
+    <div class="kpi-num" style="color:{'var(--amber)' if q_count else 'var(--text3)'}">{q_count}</div>
+    <div class="kpi-label">Offline Queue</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-# ═════════════════════════════════════════════════════════════════════════════
-# TABS — underline style
-# ═════════════════════════════════════════════════════════════════════════════
+# ── Tabs ──────────────────────────────────────────────────────────────────────
 tab1, tab2, tab3, tab4 = st.tabs([
-    "📸  Field Capture",
-    "📋  Live Punchlist",
-    "📊  Dashboard",
-    "⚙️  Office Sync",
+    "Field Capture", "Live Punchlist", "Dashboard", "Sync & Data"
 ])
+
+def _sec(label):
+    st.markdown(f'<div class="section-label">{label}</div>', unsafe_allow_html=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 1 — FIELD CAPTURE
 # ─────────────────────────────────────────────────────────────────────────────
 with tab1:
-    cap_col, form_col = st.columns([1, 1.1], gap="large")
+    left, right = st.columns([1, 1.05], gap="large")
 
-    with cap_col:
+    with left:
         _sec("Connectivity")
         connectivity = st.radio(
-            "connectivity",
-            ["🟢 Live AI Mode (5G/Wi-Fi)", "🟡 Offline Mode (No Signal)"],
+            "con", ["🟢 Live AI Mode", "🟡 Offline Mode"],
             label_visibility="collapsed",
         )
         is_live = connectivity.startswith("🟢")
 
         _sec("Site Photo")
-        img_src = st.radio("img_src", ["Camera", "Upload File"],
-                           horizontal=True, label_visibility="collapsed")
+        src = st.radio("src", ["Camera", "Upload"], horizontal=True,
+                       label_visibility="collapsed")
 
-        captured_image = None
-        if img_src == "Camera":
-            captured_image = st.camera_input("Take a photo", label_visibility="collapsed")
+        captured = None
+        if src == "Camera":
+            captured = st.camera_input("", label_visibility="collapsed")
         else:
-            captured_image = st.file_uploader(
-                "Upload image", type=["jpg","jpeg","png","webp"],
-                label_visibility="collapsed",
-            )
+            captured = st.file_uploader("", type=["jpg","jpeg","png","webp"],
+                                        label_visibility="collapsed")
 
         img_bytes = None
-        if captured_image is not None:
-            img_bytes = (captured_image.read()
-                         if hasattr(captured_image, "read")
-                         else captured_image.getvalue())
+        if captured:
+            img_bytes = (captured.read() if hasattr(captured, "read")
+                         else captured.getvalue())
             try:
-                st.image(Image.open(io.BytesIO(img_bytes)), use_container_width=True)
+                st.image(Image.open(io.BytesIO(img_bytes)),
+                         use_container_width=True)
             except Exception:
                 pass
 
-        if img_bytes is not None:
+        if img_bytes:
             if is_live:
-                if st.button("Analyze with Vision AI", type="primary",
+                if st.button("Analyze with AI", type="primary",
                              use_container_width=True):
-                    with st.spinner("Analyzing with Gemini Vision…"):
+                    with st.spinner("Analyzing…"):
                         st.session_state.ai_suggestion = gemini_analyze_image(img_bytes)
 
                 if st.session_state.ai_suggestion:
-                    s      = st.session_state.ai_suggestion
-                    p_pill = _priority_pill(s.get("priority", "Medium"))
+                    s  = st.session_state.ai_suggestion
+                    pp = _priority_pill(s.get("priority", "Medium"))
                     st.markdown(f"""
-<div class="ai-card">
-  <div class="ai-card-header">
-    <div style="width:28px;height:28px;background:var(--orange-soft);border-radius:8px;
-                display:flex;align-items:center;justify-content:center;font-size:0.9rem">🤖</div>
-    <div class="ai-card-title">AI Analysis</div>
-    <div style="margin-left:auto">{p_pill}</div>
-  </div>
-  <div class="ai-grid">
-    <div class="ai-field">
-      <div class="ai-lbl">Defect Type</div>
-      <div class="ai-val">{s.get('defect_type','—')}</div>
+<div class="card">
+  <div class="card-label">AI Analysis</div>
+  <div class="field-grid">
+    <div class="field">
+      <div class="field-label">Defect Type</div>
+      <div class="field-value">{s.get('defect_type','—')}</div>
     </div>
-    <div class="ai-field">
-      <div class="ai-lbl">Trade</div>
-      <div class="ai-val">{s.get('trade','—')}</div>
+    <div class="field">
+      <div class="field-label">Priority</div>
+      <div class="field-value">{pp}</div>
     </div>
-    <div class="ai-field" style="grid-column:span 2">
-      <div class="ai-lbl">Subcontractor</div>
-      <div class="ai-val">{s.get('subcontractor_hint','—')}</div>
+    <div class="field">
+      <div class="field-label">Trade</div>
+      <div class="field-value">{s.get('trade','—')}</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Subcontractor</div>
+      <div class="field-value" style="font-size:0.8rem">{s.get('subcontractor_hint','—')}</div>
     </div>
   </div>
-  <div class="ai-full">
-    <div class="ai-lbl">Reasoning</div>
-    <div class="ai-val">{s.get('reasoning','—')}</div>
+  <div class="field-full">
+    <div class="field-label">Reasoning</div>
+    <div class="field-value" style="font-size:0.82rem;color:var(--text2)">{s.get('reasoning','—')}</div>
   </div>
-  <div class="ai-full" style="margin-top:8px">
-    <div class="ai-lbl">Repair Method</div>
-    <div class="ai-val">{s.get('repair_method','—')}</div>
+  <div class="field-full">
+    <div class="field-label">Repair Method</div>
+    <div class="field-value" style="font-size:0.82rem;color:var(--text2)">{s.get('repair_method','—')}</div>
   </div>
 </div>
 """, unsafe_allow_html=True)
             else:
-                if st.button("Save to Offline Queue", type="primary",
+                if st.button("Save to Queue", type="primary",
                              use_container_width=True):
                     st.session_state.offline_queue.append({
                         "timestamp":   datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         "image_bytes": img_bytes,
                         "size_kb":     round(len(img_bytes)/1024, 1),
                     })
-                    st.success(
-                        f"Saved. Queue: {len(st.session_state.offline_queue)} item(s)"
-                    )
+                    st.success(f"Saved — {len(st.session_state.offline_queue)} in queue")
 
         _sec("Voice Notes")
-        audio_input  = st.audio_input("Record voice note", label_visibility="collapsed")
-        translate_cb = st.checkbox("Translate to English", value=False)
-
-        if audio_input is not None:
-            audio_bytes = (audio_input.read()
-                           if hasattr(audio_input, "read")
-                           else audio_input.getvalue())
+        audio = st.audio_input("", label_visibility="collapsed")
+        translate = st.checkbox("Translate to English", value=False)
+        if audio:
+            ab = audio.read() if hasattr(audio, "read") else audio.getvalue()
             if st.button("Transcribe", use_container_width=True):
                 with st.spinner("Transcribing…"):
-                    st.session_state.v_text = gemini_transcribe(
-                        audio_bytes, translate=translate_cb
-                    )
+                    st.session_state.v_text = gemini_transcribe(ab, translate)
 
         if st.session_state.v_text:
             st.markdown(f"""
-<div class="transcript-box">
-  <div class="transcript-label">Transcript</div>
+<div class="transcript">
+  <div style="font-family:'Geist Mono',monospace;font-size:0.6rem;
+              text-transform:uppercase;letter-spacing:0.1em;
+              color:var(--text3);margin-bottom:0.4rem">Transcript</div>
   {st.session_state.v_text}
 </div>
 """, unsafe_allow_html=True)
 
-    with form_col:
+    with right:
         _sec("Review & Assign")
 
         if not is_live:
             st.markdown("""
-<div class="info-card">
-  <strong>Offline Mode Active</strong><br>
-  The assignment form is unavailable without connectivity.
-  Use the queue button on the left to save captures locally,
-  then sync via the Office Sync tab once signal is restored.
+<div class="offline-note">
+  <strong style="color:var(--text)">Offline mode</strong> — form unavailable.<br>
+  Queue captures on the left, then sync when signal is restored.
 </div>
 """, unsafe_allow_html=True)
         else:
             ai             = st.session_state.ai_suggestion
-            _defect_types  = [
-                "Honeycombing","Surface Cracking","Spalling","Rebar Exposure",
-                "Formwork Misalignment","Cold Joint","Segregation",
-                "Void Formation","Delamination","Cover Depth Deficiency","Other",
-            ]
-            _priorities     = ["High","Medium","Low"]
-            _statuses       = ["Open","Draft","Closed"]
-            _subcontractors = ["Apex Concrete Works","BuildRight Formwork","SteelCore Rebar"]
+            _defects       = ["Honeycombing","Surface Cracking","Spalling","Rebar Exposure",
+                               "Formwork Misalignment","Cold Joint","Segregation",
+                               "Void Formation","Delamination","Cover Depth Deficiency","Other"]
+            _priorities    = ["High","Medium","Low"]
+            _statuses      = ["Open","Draft","Closed"]
+            _subs          = ["Apex Concrete Works","BuildRight Formwork","SteelCore Rebar"]
 
-            def _safe_idx(lst, val, default=0):
+            def _idx(lst, val, d=0):
                 try: return lst.index(val)
-                except ValueError: return default
+                except ValueError: return d
 
-            defect_idx   = _safe_idx(_defect_types,  ai.get("defect_type",""))
-            priority_idx = _safe_idx(_priorities,     ai.get("priority","Medium"), 1)
-            sub_idx      = _safe_idx(_subcontractors, ai.get("subcontractor_hint","Apex Concrete Works"))
-
-            with st.form("assign_form", clear_on_submit=True):
-                location_val = st.text_input(
-                    "Location / Grid Reference",
-                    placeholder="e.g. Level 3 — Grid F7, Column C12",
-                )
+            with st.form("form", clear_on_submit=True):
+                location = st.text_input("Location / Grid Reference",
+                                         placeholder="e.g. Level 3 — Grid F7")
                 c1, c2 = st.columns(2)
-                with c1: status_val   = st.selectbox("Status", _statuses)
-                with c2: priority_val = st.selectbox("Priority", _priorities, index=priority_idx)
-                defect_val = st.selectbox("Defect Type", _defect_types, index=defect_idx)
-                sub_val    = st.selectbox("Subcontractor", _subcontractors, index=sub_idx)
-                repair_val = st.text_area("Repair Method",
-                                          value=ai.get("repair_method",""), height=80)
-                notes_val  = st.text_area(
-                    "Notes",
-                    value=st.session_state.v_text,
-                    placeholder="Voice transcript or additional notes…",
-                    height=80,
-                )
-                submitted = st.form_submit_button(
-                    "Log Defect to Punchlist",
-                    type="primary", use_container_width=True,
-                )
+                with c1: status   = st.selectbox("Status", _statuses)
+                with c2: priority = st.selectbox("Priority", _priorities,
+                                                 index=_idx(_priorities, ai.get("priority","Medium"), 1))
+                defect_type = st.selectbox("Defect Type", _defects,
+                                           index=_idx(_defects, ai.get("defect_type","")))
+                sub         = st.selectbox("Subcontractor", _subs,
+                                           index=_idx(_subs, ai.get("subcontractor_hint","")))
+                repair      = st.text_area("Repair Method", value=ai.get("repair_method",""), height=76)
+                notes       = st.text_area("Notes", value=st.session_state.v_text,
+                                           placeholder="Additional notes…", height=76)
+                submitted   = st.form_submit_button("Log Defect", type="primary",
+                                                    use_container_width=True)
+
                 if submitted:
-                    if not location_val.strip():
+                    if not location.strip():
                         st.error("Location is required.")
                     else:
-                        due_date = (
-                            datetime.date.today() +
-                            datetime.timedelta(days=_sla_days(priority_val))
-                        )
+                        due = datetime.date.today() + datetime.timedelta(days=_sla_days(priority))
                         photo_id = ""
-                        if img_bytes is not None:
+                        if img_bytes:
                             photo_id = _next_id().replace("LA-","IMG-")
                             try:
                                 pil = Image.open(io.BytesIO(img_bytes)).convert("RGB")
-                                buf = io.BytesIO()
-                                pil.save(buf, format="JPEG", quality=85)
-                                st.session_state.images[photo_id] = buf.getvalue()
+                                b   = io.BytesIO()
+                                pil.save(b, format="JPEG", quality=85)
+                                st.session_state.images[photo_id] = b.getvalue()
                             except Exception:
                                 st.session_state.images[photo_id] = img_bytes
 
-                        new_id  = _next_id()
-                        new_row = {
-                            "ID": new_id,
-                            "Timestamp":     datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
-                            "Location":      location_val,
-                            "Status":        status_val,
-                            "Defect Type":   defect_val,
-                            "Priority":      priority_val,
-                            "Subcontractor": sub_val,
-                            "Repair Method": repair_val,
-                            "Notes":         notes_val,
-                            "Due Date":      str(due_date),
-                            "AI Reasoning":  ai.get("reasoning","Manual entry."),
-                            "Photo ID":      photo_id,
-                        }
-                        st.session_state.defects = pd.concat(
-                            [st.session_state.defects, pd.DataFrame([new_row])],
-                            ignore_index=True,
-                        )
+                        nid = _next_id()
+                        st.session_state.defects = pd.concat([
+                            st.session_state.defects,
+                            pd.DataFrame([{
+                                "ID": nid, "Timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M"),
+                                "Location": location, "Status": status, "Defect Type": defect_type,
+                                "Priority": priority, "Subcontractor": sub,
+                                "Repair Method": repair, "Notes": notes, "Due Date": str(due),
+                                "AI Reasoning": ai.get("reasoning","Manual entry."),
+                                "Photo ID": photo_id,
+                            }])
+                        ], ignore_index=True)
                         st.session_state.ai_suggestion = {}
                         st.session_state.v_text        = ""
-                        st.success(
-                            f"✓  **{new_id}** logged — {defect_val} · "
-                            f"{priority_val} Priority · Due {due_date}"
-                        )
+                        st.success(f"{nid} logged — {defect_type} · {priority} · Due {due}")
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TAB 2 — LIVE PUNCHLIST
+# TAB 2 — PUNCHLIST
 # ─────────────────────────────────────────────────────────────────────────────
 with tab2:
     df = st.session_state.defects
-
     if df.empty:
         st.markdown("""
-<div class="empty-state">
-  <div class="empty-state-icon">📋</div>
-  <div class="empty-state-text">
-    No defects logged yet.<br>
-    Start by capturing a site photo in the Field Capture tab.
-  </div>
+<div class="empty">
+  <span style="font-size:1.5rem;opacity:0.3">📋</span>
+  No defects logged yet.
 </div>
 """, unsafe_allow_html=True)
     else:
-        fc1, fc2, _ = st.columns([1, 1, 2])
-        with fc1: p_filter = st.selectbox("Priority", ["All","High","Medium","Low"])
-        with fc2: s_filter = st.selectbox("Status",   ["All","Open","Draft","Closed"])
+        f1, f2, _ = st.columns([1, 1, 2])
+        with f1: pf = st.selectbox("Priority", ["All","High","Medium","Low"])
+        with f2: sf = st.selectbox("Status",   ["All","Open","Draft","Closed"])
 
-        disp = df.copy()
-        if p_filter != "All": disp = disp[disp["Priority"] == p_filter]
-        if s_filter != "All": disp = disp[disp["Status"]   == s_filter]
+        d = df.copy()
+        if pf != "All": d = d[d["Priority"] == pf]
+        if sf != "All": d = d[d["Status"]   == sf]
 
-        st.markdown(
-            f'<div class="record-count">{len(disp)} of {len(df)} records</div>',
-            unsafe_allow_html=True,
-        )
+        st.caption(f"{len(d)} of {len(df)} records")
 
-        def _style_p(val):
-            c = {"High":"#FF3B30","Medium":"#FF9500","Low":"#34C759"}.get(val,"")
-            return f"color:{c};font-weight:600" if c else ""
+        def sp(v): c={"High":var_red,"Medium":var_amb,"Low":var_grn}.get(v,""); return f"color:{c};font-weight:500" if c else ""
+        def ss(v): c={"Open":var_red,"Draft":var_amb,"Closed":var_grn}.get(v,""); return f"color:{c}" if c else ""
 
-        def _style_s(val):
-            c = {"Open":"#FF3B30","Draft":"#FF9500","Closed":"#34C759"}.get(val,"")
-            return f"color:{c}" if c else ""
+        var_red = "#ef4444"; var_amb = "#f59e0b"; var_grn = "#22c55e"
 
         st.dataframe(
-            disp.style.applymap(_style_p, subset=["Priority"])
-                      .applymap(_style_s, subset=["Status"]),
-            use_container_width=True, height=420,
+            d.style.applymap(sp, subset=["Priority"]).applymap(ss, subset=["Status"]),
+            use_container_width=True, height=400,
         )
 
         _sec("Export")
         st.download_button(
-            label=f"Download ZIP — punchlist.csv + {len(st.session_state.images)} photo(s)",
+            f"Download ZIP — {len(st.session_state.images)} photo(s)",
             data=build_zip_export(),
-            file_name=f"leighton_punchlist_{datetime.date.today()}.zip",
+            file_name=f"leighton_{datetime.date.today()}.zip",
             mime="application/zip",
             use_container_width=True,
         )
@@ -1125,115 +948,105 @@ with tab2:
 # ─────────────────────────────────────────────────────────────────────────────
 with tab3:
     df = st.session_state.defects
-
     if df.empty or len(df) < 2:
         st.markdown("""
-<div class="empty-state">
-  <div class="empty-state-icon">📊</div>
-  <div class="empty-state-text">
-    Not enough data yet.<br>
-    Log defects or load the demo dataset from the Office Sync tab.
-  </div>
+<div class="empty">
+  <span style="font-size:1.5rem;opacity:0.3">📊</span>
+  No data yet — load the demo dataset from Sync &amp; Data.
 </div>
 """, unsafe_allow_html=True)
     else:
-        ch1, ch2 = st.columns(2, gap="large")
-        with ch1:
-            _sec("Defects by Priority")
+        c1, c2 = st.columns(2, gap="large")
+        with c1:
+            _sec("By Priority")
             pc = df["Priority"].value_counts().reset_index()
             pc.columns = ["Priority","Count"]
-            pc["Priority"] = pd.Categorical(
-                pc["Priority"], categories=["High","Medium","Low"], ordered=True
-            )
+            pc["Priority"] = pd.Categorical(pc["Priority"],
+                                            categories=["High","Medium","Low"], ordered=True)
             st.bar_chart(pc.sort_values("Priority").set_index("Priority"),
-                         color="#FF6600", use_container_width=True, height=280)
-        with ch2:
-            _sec("Defects by Subcontractor")
+                         color="#ff6600", height=240, use_container_width=True)
+        with c2:
+            _sec("By Subcontractor")
             sc = df["Subcontractor"].value_counts().reset_index()
             sc.columns = ["Subcontractor","Count"]
             st.bar_chart(sc.set_index("Subcontractor"),
-                         color="#1D1D1F", use_container_width=True, height=280)
+                         color="#52525b", height=240, use_container_width=True)
 
-        ch3, ch4 = st.columns(2, gap="large")
-        with ch3:
-            _sec("Defects by Type")
+        c3, c4 = st.columns(2, gap="large")
+        with c3:
+            _sec("By Defect Type")
             tc = df["Defect Type"].value_counts().head(8).reset_index()
             tc.columns = ["Defect Type","Count"]
             st.bar_chart(tc.set_index("Defect Type"),
-                         color="#E55A00", use_container_width=True, height=260)
-        with ch4:
-            _sec("Defects by Status")
+                         color="#a1a1aa", height=240, use_container_width=True)
+        with c4:
+            _sec("By Status")
             stc = df["Status"].value_counts().reset_index()
             stc.columns = ["Status","Count"]
             st.bar_chart(stc.set_index("Status"),
-                         color="#6E6E73", use_container_width=True, height=260)
+                         color="#3f3f46", height=240, use_container_width=True)
 
-        _sec("Priority × Subcontractor Matrix")
+        _sec("Priority × Subcontractor")
         pivot = pd.crosstab(df["Subcontractor"], df["Priority"],
                             margins=True, margins_name="Total")
-        cols_order = [c for c in ["High","Medium","Low","Total"] if c in pivot.columns]
-        st.dataframe(pivot[cols_order], use_container_width=True)
+        cols  = [c for c in ["High","Medium","Low","Total"] if c in pivot.columns]
+        st.dataframe(pivot[cols], use_container_width=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# TAB 4 — OFFICE SYNC & DATA
+# TAB 4 — SYNC & DATA
 # ─────────────────────────────────────────────────────────────────────────────
 with tab4:
-    sc1, sc2 = st.columns(2, gap="large")
+    s1, s2 = st.columns(2, gap="large")
 
-    with sc1:
+    with s1:
         _sec("Offline Queue")
-        queue = st.session_state.offline_queue
-        if queue:
-            total_kb = sum(i.get("size_kb",0) for i in queue)
+        q = st.session_state.offline_queue
+        if q:
+            kb = sum(i.get("size_kb",0) for i in q)
             st.markdown(f"""
-<div class="queue-badge">
-  <strong>{len(queue)} capture(s)</strong> pending sync
-  &nbsp;&middot;&nbsp; {total_kb:.1f} KB total
+<div class="queue-notice">
+  {len(q)} capture(s) pending &nbsp;·&nbsp; {kb:.1f} KB
 </div>
 """, unsafe_allow_html=True)
             st.dataframe(
-                pd.DataFrame([
-                    {"#": i+1, "Captured At": q["timestamp"],
-                     "Size (KB)": q.get("size_kb","—")}
-                    for i, q in enumerate(queue)
-                ]),
+                pd.DataFrame([{"#":i+1,"Captured At":x["timestamp"],
+                                "KB":x.get("size_kb","—")}
+                               for i,x in enumerate(q)]),
                 use_container_width=True, hide_index=True,
             )
-            if st.button("Process Batch Sync", type="primary", use_container_width=True):
-                with st.spinner("Syncing to project server…"):
+            if st.button("Sync Now", type="primary", use_container_width=True):
+                with st.spinner("Syncing…"):
                     import time; time.sleep(1.5)
                     st.session_state.offline_queue = []
-                    st.success("Batch sync complete.")
+                    st.success("Sync complete.")
                     st.rerun()
         else:
             st.markdown("""
-<div class="empty-state" style="padding:2rem 1rem">
-  <div class="empty-state-icon">✓</div>
-  <div class="empty-state-text">Offline queue is empty</div>
+<div class="empty" style="padding:2rem">
+  <span style="font-size:1.2rem;opacity:0.3">✓</span>
+  Queue is empty
 </div>
 """, unsafe_allow_html=True)
 
-    with sc2:
-        _sec("Demo Data")
+    with s2:
+        _sec("Data")
         st.markdown("""
-<div class="info-card" style="margin-bottom:1rem">
-  Load <strong>60+ realistic defects</strong> across multiple subcontractors,
-  priorities, and locations to showcase the Dashboard and Punchlist.
+<div class="desc-card">
+  Load <b style="color:var(--text)">61 realistic defects</b> to demo the dashboard
+  and punchlist features.
 </div>
 """, unsafe_allow_html=True)
 
         if st.button("Load Demo Dataset", type="primary", use_container_width=True):
             load_demo_data()
-            st.success("Demo dataset loaded.")
+            st.success("Dataset loaded.")
             st.rerun()
 
         if not st.session_state.defects.empty:
             st.markdown("<div style='height:0.5rem'></div>", unsafe_allow_html=True)
             st.markdown("""
-<div style="background:var(--red-soft);border:1px solid rgba(255,59,48,0.15);
-            border-radius:var(--r-md);padding:0.85rem 1rem;font-size:0.82rem;
-            color:#C0392B;line-height:1.5;margin-bottom:0.75rem">
-  This will permanently clear all logged defects and images from this session.
+<div class="danger-notice">
+  This clears all defects and images from this session.
 </div>
 """, unsafe_allow_html=True)
             if st.button("Clear All Data", use_container_width=True):
@@ -1242,23 +1055,21 @@ with tab4:
                 st.session_state.ai_suggestion  = {}
                 st.session_state.v_text         = ""
                 st.session_state.defect_counter = 1
-                st.success("All data cleared.")
+                st.success("Cleared.")
                 st.rerun()
 
         _sec("Session")
         st.markdown(f"""
-<div class="session-info">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem">
-    <span class="session-key">Gemini API</span>
-    <span class="session-val">{'Connected' if _GEMINI_OK else 'No key set'}</span>
-    <span class="session-key">Total Defects</span>
-    <span class="session-val">{len(st.session_state.defects)}</span>
-    <span class="session-key">Photos Stored</span>
-    <span class="session-val">{len(st.session_state.images)}</span>
-    <span class="session-key">Offline Queue</span>
-    <span class="session-val">{len(st.session_state.offline_queue)} item(s)</span>
-    <span class="session-key">Session Date</span>
-    <span class="session-val">{datetime.date.today().strftime('%d %b %Y')}</span>
-  </div>
+<div class="meta-grid">
+  <span class="meta-key">Gemini</span>
+  <span class="meta-val">{'Connected' if _GEMINI_OK else 'No key'}</span>
+  <span class="meta-key">Defects</span>
+  <span class="meta-val">{len(st.session_state.defects)}</span>
+  <span class="meta-key">Photos</span>
+  <span class="meta-val">{len(st.session_state.images)}</span>
+  <span class="meta-key">Queue</span>
+  <span class="meta-val">{len(st.session_state.offline_queue)}</span>
+  <span class="meta-key">Date</span>
+  <span class="meta-val">{datetime.date.today().strftime('%d %b %Y')}</span>
 </div>
 """, unsafe_allow_html=True)
